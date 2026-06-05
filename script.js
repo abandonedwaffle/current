@@ -1,18 +1,18 @@
-const scoreBoard = (function() {
-    let score = 0;
+let user = {
+  name: "John",
+  surname: "Smith"
+};
 
-    return{
-        addPoint: function () {
-            score++;
-        },
-        getScore: function () {
-            return score;
-        }
-    }
-})();
+Object.defineProperty(user, 'fullName', {
+  get() {
+    return `${this.name} ${this.surname}`;
+  },
 
+  set(value) {
+    [this.name, this.surname] = value.split(" ");
+  }
+});
 
-scoreBoard.addPoint();
-scoreBoard.addPoint();
+alert(user.fullName); // John Smith
 
-console.log(scoreBoard.getScore());
+for(let key in user) alert(key); // name, surname
